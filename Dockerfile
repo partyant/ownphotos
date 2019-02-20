@@ -90,6 +90,12 @@ ENV REDIS_PORT 11211
 # Timezone
 ENV TIME_ZONE UTC
 
+# Only keep resized photos in the internal library
+ENV FULLPHOTO_FIT false
+# Full photo target fit window dimensions
+ENV FULLPHOTO_WIDTH 2048
+ENV FULLPHOTO_HEIGHT 2048
+
 EXPOSE 80
 COPY . /code
 

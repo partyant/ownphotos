@@ -357,7 +357,8 @@ class Photo(models.Model):
         except:
             pass
 
-        # image.thumbnail(ownphotos.settings.FULLPHOTO_SIZE, PIL.Image.ANTIALIAS)
+        if ownphotos.settings.FULLPHOTO_FIT: 
+            image.thumbnail(ownphotos.settings.FULLPHOTO_SIZE, PIL.Image.ANTIALIAS)
         image_io = BytesIO()
         image.save(image_io, format="JPEG")
         self.image.save(self.image_hash + '.jpg',
