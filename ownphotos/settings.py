@@ -267,7 +267,7 @@ THUMBNAIL_SIZE_MEDIUM = (500, 500)
 THUMBNAIL_SIZE = (500, 500)
 THUMBNAIL_SIZE_BIG = (1000, 1000)
 
-FULLPHOTO_FIT = os.environ['FULLPHOTO_FIT'] == 'true'
+FULLPHOTO_FIT = (os.environ.get('FULLPHOTO_FIT', '').lower() == 'true')
 FULLPHOTO_SIZE = (int(os.environ['FULLPHOTO_WIDTH']), int(os.environ['FULLPHOTO_HEIGHT']))
 
 CORS_ORIGIN_ALLOW_ALL = False
