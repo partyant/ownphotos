@@ -51,7 +51,7 @@ services:
     container_name: ownphotos-backend
     volumes:
       # Your photos go here
-      - $HOME/Pictures/:/data
+      - $HOME/Pictures/ownphotos:/data
       - media:/code/protected_media
     environment:
       - SECRET_KEY=change_meme
@@ -72,6 +72,7 @@ services:
       - REDIS_HOST=ownphotos-redis
       - REDIS_PORT=6379
       - MAPBOX_API_KEY=CHANGE_MEAAAA
+      - FULLPHOTO_FIT=true
     links:
       - "ownphotos-db:ownphotos-db"
       - "ownphotos-redis:ownphotos-redis"
