@@ -13,6 +13,15 @@ services:
     ports:
       - "3000:80"
       
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    container_name: ownphotos-adminer
+    links:
+      - "ownphotos-db:db"
+
   ownphotos-db:
     image: postgres
     container_name: ownphotos-db
@@ -36,7 +45,7 @@ services:
       - "backend:backend"
 
   backend:
-    image: hooram/ownphotos:dev
+    image: partyant/ownphotos:latest
     # For development uncomment this and comment the image name above
     #build: .
     container_name: ownphotos-backend
