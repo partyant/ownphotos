@@ -22,7 +22,11 @@ else:
     User.objects.create_superuser('$ADMIN_USERNAME', '$ADMIN_EMAIL', '$ADMIN_PASSWORD')
 EOF
 
-echo "Running backend server..."
-
+echo "Running rqworker..."
 /miniconda/bin/python manage.py rqworker default 2>&1 | tee logs/rqworker.log &
+
+echo "Running scan scheduler..."
+/miniconda/bin/python manage.py scheduler 2>&1 | tee logs/scheduler.log &
+
+echo "Running backend server..."
 /miniconda/bin/gunicorn --bind 0.0.0.0:8001 ownphotos.wsgi 2>&1 | tee logs/gunicorn.log

@@ -83,6 +83,7 @@ def get_or_create_person(name):
 
 class User(AbstractUser):
     scan_directory = models.CharField(max_length=512, db_index=True)
+    auto_scan = models.BooleanField(default=True)
     avatar = models.ImageField(upload_to='avatars', null=True)
 
     nextcloud_server_address = models.CharField(max_length=200,default=None,null=True)
