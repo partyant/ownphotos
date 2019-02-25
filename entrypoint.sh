@@ -9,6 +9,7 @@ service nginx restart
 # source /venv/bin/activate
 
 /miniconda/bin/python manage.py makemigrations api 2>&1 | tee logs/makemigrations.log
+
 /miniconda/bin/python manage.py migrate 2>&1 | tee logs/migrate.log
 
 /miniconda/bin/python manage.py shell <<EOF
